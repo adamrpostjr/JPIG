@@ -1,0 +1,14 @@
+{
+  "name": "jpig",
+  "version": "1.0.0",
+  "description": "James Password Insult Generator",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Adam Post",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^11.0.3"
+  }
+}
