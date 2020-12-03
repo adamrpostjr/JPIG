@@ -24,6 +24,16 @@
       width: 15em;
       height: 3em;
   }
+  .button-area{
+    text-align: center;
+    position: absolute;
+    bottom: 9px;
+    width: 90%;
+    padding: unset;
+    left: 50%;
+    margin: unset;
+    transform: translate(-50%);
+  }
   button{
     width: 100%;
     height: 40px;
@@ -33,3 +43,9 @@
     letter-spacing: 14px;
     text-align: center;
   }
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+
+   opacity: 1;
+
+}
