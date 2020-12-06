@@ -5,29 +5,75 @@
     <title>JPIG</title>
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
     <link rel="stylesheet" type="text/css" href="assets\css\index.css">
+    <script>
+    const {remote} = require('electron');
+    const mainProcess = remote.require('./index.js');
+    </script>
 </head>
-    <body style="background: black; color: white;">
-        <div class="top-div">
-            <h2 class="glitch">James Password</h2>
-            <h2 class="glitch">Insult Generator</h2>
-            <hr>
-            <p style="text-align: center" id="genPass" onclick="copyElementText(this.id)">................................</p>
-        </div>
-        <div style="text-align: center;">
-            <span>Password Strength</span><br>
-            <progress value="0" max="100"></progress>
+    <body>
+        <div class="titleDiv">
+            <h1 class="glitch">JPIG</h1>
+            <span>James Password Insult Generator</span>
         </div>
         <div>
-            <label style="float:left"for="Numbers">Min Number Count:</label>
-            <input style="float:right"type="number" name="Numbers" id="" min=0 max=10><br>
-            <label style="float:left"for="Special">Min Special Char Count:</label>
-            <input style="float:right"type="number" name="Special" id="" min=0 max=10><br>
-            <label style="float:left"for="Caps">Min Capital Letter Count:</label>
-            <input style="float:right"type="number" name="Caps" id="" min=0 max=10><br>
+        <label for="passType" style="display: none">
+            <span>Type</span> 
+            <br>
+            <select name="passType" id="passType">
+                <option value="Password">Password</option>
+                <option value="Pass Phrase">Pass Phrase</option>
+            </select>
+        </label>
+        <div class="typePassword" style="display: none">
+            <label for="A-Z">
+                <span>A-Z</span>
+                <input type="checkbox" name="A-Z" id="A-Z">
+            </label>
+            <br>
+            <label for="a-z">
+                <span>a-z</span>
+                <input type="checkbox" name="a-z" id="a-z">
+            </label>
+            <br>
+            <label for="0-9">
+                <span>0-9</span>
+                <input type="checkbox" name="0-9" id="0-9">
+            </label>
+            <br>
+            <label for="special">
+                <span>!@#$</span>
+                <input type="checkbox" name="special" id="special">
+            </label>
+            <br>
+            <label for="minNum">
+                <span>Min Numbers</span>
+                <span id="num">1</span>
+                <button id="numMinusOne" onclick="minus('num')">-</button>
+                <button id="numPlusOne" onclick="plus('num')">+</button>
+            </label>
+            <label for="minSpecial">
+                <span></span>Min Special</span>
+                <span id="spec">1</span>
+                <button id="specMinusOne" onclick="minus('spec')">-</button>
+                <button id="specPlusOne" onclick="plus('spec')">+</button>
+            </label>
         </div>
-        <br>
-        <div class="button-area">
-            <button onclick="">Generate</button>
+        <div class="typePassphrase" style="display: none;">
+            <label for="numOfWords">
+                Number Of Words
+                <span id="numWords">2</span>
+                <button id="wordsMinusOne">-</button>
+                <button id="wordsPlusOne">+</button>
+            </label>
+            <label for="">
+                Word Separator
+                <input type="text" value="-" name="wordSeperator" id="wordSeperator">
+            </label>
+        </div>
+        <div class="password">
+            <span id="genPass" onclick="copyElementText(this.id)">...........................</span>
+            <br>
+            <button onclick="displayPass()">Generate</button>
         </div>
     </body>
     <script src="assets\js\client.js"></script>
